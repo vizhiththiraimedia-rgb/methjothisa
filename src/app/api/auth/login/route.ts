@@ -1,5 +1,4 @@
 export const dynamic = 'force-dynamic';
-export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 import { verifyAccessToken, generateAccessToken, generateRefreshToken, verifyPassword } from "@/lib/auth";
@@ -43,4 +42,3 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export const dynamic = 'force-dynamic';

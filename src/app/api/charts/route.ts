@@ -1,5 +1,4 @@
 export const dynamic = 'force-dynamic';
-export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from "next/server";
 import { authenticateRequest, createApiResponse } from "@/lib/api-helpers";
 
@@ -21,4 +20,3 @@ export async function POST(request: NextRequest) {
   return NextResponse.json(createApiResponse(true, { message: "Chart creation initiated" }), { status: 201 });
 }
 
-export const dynamic = 'force-dynamic';
