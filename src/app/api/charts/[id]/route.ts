@@ -1,3 +1,4 @@
+export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from "next/server";
 import { calculateVarga } from "@node-jhora/core";
 import prisma from "@/lib/prisma";
