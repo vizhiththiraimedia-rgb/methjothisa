@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: methjothisa
+    runtime: docker
+    plan: starter
+    region: oregon
+    branch: main
+    buildCommand: docker build -t methjothisa .
+    startCommand: node server.js
+    healthCheckPath: /api/health
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: methjothisa-db
+          property: connectionString
+      - key: NODE_ENV
+        value: production
+      - key: NEXTAUTH_URL
+        fromService:
+          type: web
+          name: methjothisa
+          property: host
+    autoDeploy: true
