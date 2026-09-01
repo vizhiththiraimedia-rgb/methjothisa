@@ -1,6 +1,6 @@
 export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from "next/server";
-import { calculateVarga } from "@node-jhora/core";
+// dynamic import to avoid ERR_REQUIRE_ESM on Vercel
 import prisma from "@/lib/prisma";
 import { ApiResponse } from "@/types";
 import { authenticateRequest } from "@/lib/api-helpers";
@@ -28,6 +28,7 @@ export async function GET(request: NextRequest, { params }: { params: { id: stri
     };
 
     const planetaryPositions = safeParse(chart.planetaryPositions, {});
+    const { calculateVarga } = await import("@node-jhora/core");
     const divisions = [1, 2, 3, 4, 7, 9, 10, 12, 16, 20, 24, 27, 30, 40, 45, 60];
     const ZODIAC_SIGNS = ["Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya", "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena"];
     const vargas: Record<string, any[]> = {};

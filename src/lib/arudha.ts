@@ -1,4 +1,4 @@
-import { calculateVarga } from "@node-jhora/core";
+// dynamic import to avoid ERR_REQUIRE_ESM on Vercel
 
 const ZODIAC_SIGNS = ["Mesha", "Vrishabha", "Mithuna", "Karka", "Simha", "Kanya", "Tula", "Vrischika", "Dhanu", "Makara", "Kumbha", "Meena"];
 
@@ -20,7 +20,8 @@ function getSignDistance(fromSign: number, toSign: number) {
   return dist;
 }
 
-export function calculateArudhaPadas(planetaryPositions: Record<string, any>) {
+export async function calculateArudhaPadas(planetaryPositions: Record<string, any>) {
+  const { calculateVarga } = await import("@node-jhora/core");
   const padas: Record<string, { sign: number, signName: string }> = {};
   
   const asc = planetaryPositions["Ascendant"] || planetaryPositions["Lagna"] || planetaryPositions["Asc"];
