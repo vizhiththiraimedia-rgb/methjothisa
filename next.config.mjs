@@ -15,18 +15,14 @@ const nextConfig = {
     ],
     formats: ["image/avif", "image/webp"],
   },
-  serverExternalPackages: ["@node-jhora/core", "@node-jhora/analytics", "@node-jhora/prediction", "@node-jhora/ephe"],
+  experimental: {
+    serverComponentsExternalPackages: ["@node-jhora/core", "@node-jhora/analytics", "@node-jhora/prediction", "@node-jhora/ephe"],
+  },
   webpack: (config, { isServer }) => {
     config.resolve.alias = {
       ...config.resolve.alias,
       '../../../../de440s.bsp': false,
     };
-    if (isServer) {
-      config.externals.push({
-        '@node-jhora/core': 'commonjs @node-jhora/core',
-        '@node-jhora/ephe': 'commonjs @node-jhora/ephe',
-      });
-    }
     return config;
   }
 };
